@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Effic Online Tools - Smart Web Applications</title>
+  <meta name="description" content="Discover Effic's collection of elegant online tools including Random Roll Call and Image Tools. Pure frontend, multi-language, privacy-friendly." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://effic.online/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Effic Online Tools - Smart Web Applications" />
+  <meta property="og:description" content="Discover Effic's collection of elegant online tools including Random Roll Call and Image Tools." />
+  <meta property="og:url" content="https://effic.online/" />
+  <meta property="og:image" content="https://effic.online/og-image.png" />
+
+  <!-- hreflang alternates -->
+  <link rel="alternate" hreflang="en" href="https://effic.online/en/" />
+  <link rel="alternate" hreflang="zh" href="https://effic.online/zh/" />
+  <link rel="alternate" hreflang="es" href="https://effic.online/es/" />
+  <link rel="alternate" hreflang="de" href="https://effic.online/de/" />
+  <link rel="alternate" hreflang="ja" href="https://effic.online/ja/" />
+  <link rel="alternate" hreflang="x-default" href="https://effic.online/en/" />
+
+  <!-- Language detection -->
+  <script>
+    (function () {
+      var lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      var supported = { 'zh': 'zh', 'en': 'en', 'es': 'es', 'de': 'de', 'ja': 'ja' };
+      var prefix = lang.split('-')[0];
+      var target = supported[prefix] || 'en';
+      var path = '/' + target + '/';
+      if (window.location.pathname !== path && !window.location.hash) {
+        window.location.replace(path);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <noscript>
+    <p style="text-align:center; font-family:sans-serif; padding:2rem;">
+      <a href="/en/">English</a> | <a href="/zh/">中文</a> | <a href="/es/">Español</a> | <a href="/de/">Deutsch</a> | <a href="/ja/">日本語</a>
+    </p>
+  </noscript>
+</body>
+</html>

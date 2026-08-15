@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Effic オンラインツール - スマートウェブアプリケーション</title>
+  <meta name="description" content="Efficのエレガントなオンラインツール集をご覧ください。ランダム点名や画像ツールを含む、純フロントエンド、多言語対応、プライバシー重視のツールです。" />
+  <meta name="keywords" content="オンラインツール, ランダム点呼, 画像ツール, 画像圧縮, effic" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://effic.online/ja/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Effic オンラインツール - スマートウェブアプリケーション" />
+  <meta property="og:description" content="Efficのエレガントなオンラインツール集をご覧ください。ランダム点名や画像ツールを含む、純フロントエンド、多言語対応、プライバシー重視のツールです。" />
+  <meta property="og:url" content="https://effic.online/ja/" />
+  <meta property="og:image" content="https://effic.online/og-image.png" />
+  <meta property="og:locale" content="ja_JP" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Effic オンラインツール - スマートウェブアプリケーション" />
+  <meta name="twitter:description" content="Efficのエレガントなオンラインツール集をご覧ください。ランダム点名や画像ツールを含む、純フロントエンド、多言語対応、プライバシー重視のツールです。" />
+  <meta name="twitter:image" content="https://effic.online/og-image.png" />
+
+  <!-- hreflang alternates -->
+  <link rel="alternate" hreflang="en" href="https://effic.online/en/" />
+  <link rel="alternate" hreflang="zh" href="https://effic.online/zh/" />
+  <link rel="alternate" hreflang="es" href="https://effic.online/es/" />
+  <link rel="alternate" hreflang="de" href="https://effic.online/de/" />
+  <link rel="alternate" hreflang="ja" href="https://effic.online/ja/" />
+  <link rel="alternate" hreflang="x-default" href="https://effic.online/en/" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Effic Online",
+    "url": "https://effic.online/",
+    "logo": "https://effic.online/favicon.svg",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Effic オンラインツール",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "SoftwareApplication",
+            "name": "RollEasy 点名易 — ランダム点呼",
+            "description": "Excel名簿インポート、ローカルキャッシュ、スクロールアニメーション、3種類のテーマスタイル、多言語サポートを備えた純フロントエンドランダム点呼ツール。教室、会議、イベントに最適です。",
+            "url": "https://rollcall.effic.online/",
+            "applicationCategory": "WebApplication",
+            "operatingSystem": "Web"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "SoftwareApplication",
+            "name": "画像ツール",
+            "description": "圧縮、形式変換、編集、AIツール、証明写真作成を提供する商用グレードのオンライン画像処理プラットフォーム。高速、信頼性、使いやすさを実現。",
+            "url": "https://image.effic.online/",
+            "applicationCategory": "WebApplication",
+            "operatingSystem": "Web"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo" @click.prevent="scrollToSection('home')">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+            <defs>
+              <linearGradient id="logoGradNav" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#7eb3ff"/>
+                <stop offset="100%" stop-color="#3b6fd6"/>
+              </linearGradient>
+            </defs>
+            <rect width="32" height="32" rx="8" fill="url(#logoGradNav)"/>
+            <text x="16" y="22" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#fff">E</text>
+          </svg>
+          Effic ツール
+        </a>
+        <div class="nav-links" :class="{ 'nav-links-open': mobileMenuOpen }">
+          <a href="#home" :class="{ active: activeSection === 'home' }" @click.prevent="scrollToSection('home')">ホーム</a>
+          <a href="#products" :class="{ active: activeSection === 'products' }" @click.prevent="scrollToSection('products')">製品</a>
+          <a href="#features" :class="{ active: activeSection === 'features' }" @click.prevent="scrollToSection('features')">特徴</a>
+        </div>
+        <details class="lang-switcher">
+          <summary class="lang-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            日本語
+          </summary>
+          <div class="lang-dropdown">
+            <a href="/en/">English</a>
+            <a href="/zh/">中文</a>
+            <a href="/es/">Español</a>
+            <a href="/de/">Deutsch</a>
+            <a href="/ja/" class="active">日本語</a>
+          </div>
+        </details>
+        <button class="hamburger" :class="{ 'is-open': mobileMenuOpen }" @click="toggleMobileMenu" aria-label="メニュー" :aria-expanded="mobileMenuOpen">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>エレガントなオンラインツール <span class="gradient-text">をすべての人へ</span></h1>
+        <p>純フロントエンドアプリケーション、多言語サポート。プライバシー重視 — データはブラウザ内に留まります。</p>
+        <button class="hero-cta" @click="scrollToSection('products')">
+          製品を見る
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <polyline points="19 12 12 19 5 12"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section id="products" class="section">
+      <div class="section-title" v-reveal>
+        <h2>私たちの製品</h2>
+        <p>仕事や生活をより便利にするパワフルなツール</p>
+      </div>
+      <div class="product-grid">
+        <div class="product-card" v-reveal>
+          <div class="product-icon" style="color: var(--color-primary)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="3"/>
+              <circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="8" cy="12" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="8" cy="16" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="8" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="12" r="1" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="16" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3>RollEasy 点名易 — ランダム点呼</h3>
+          <p class="product-tagline">スマートでシンプルな名前選び</p>
+          <p class="product-desc">Excel名簿インポート、ローカルキャッシュ、スクロールアニメーション、3種類のテーマスタイル、多言語サポートを備えた純フロントエンドランダム点呼ツール。教室、会議、イベントに最適です。</p>
+          <ul class="product-features">
+            <li>Excel インポート</li>
+            <li>ローカルキャッシュ</li>
+            <li>ランダム点呼</li>
+            <li>テーマ切替</li>
+          </ul>
+          <a class="btn-visit" href="https://rollcall.effic.online/" target="_blank" rel="noopener">
+            ウェブサイトへ
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+        <div class="product-card" v-reveal>
+          <div class="product-icon" style="color: var(--color-primary)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <path d="M21 15l-5-5L5 21"/>
+            </svg>
+          </div>
+          <h3>画像ツール</h3>
+          <p class="product-tagline">オールインワン画像処理</p>
+          <p class="product-desc">圧縮、形式変換、編集、AIツール、証明写真作成を提供する商用グレードのオンライン画像処理プラットフォーム。高速、信頼性、使いやすさを実現。</p>
+          <ul class="product-features">
+            <li>画像圧縮</li>
+            <li>形式変換</li>
+            <li>画像編集</li>
+            <li>AI ツール</li>
+          </ul>
+          <a class="btn-visit" href="https://image.effic.online/" target="_blank" rel="noopener">
+            ウェブサイトへ
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="section-title" v-reveal>
+        <h2>選ばれる理由</h2>
+        <p>最高のユーザー体験のために最新技術で構築</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card" v-reveal>
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <h3>純フロントエンド</h3>
+          <p>バックエンドサーバー不要。すべての処理はブラウザ内で行われ、データがデバイスから離れることはありません。</p>
+        </div>
+        <div class="feature-card" v-reveal>
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h3>多言語サポート</h3>
+          <p>中国語、英語、スペイン語、ドイツ語、日本語に対応。各言語に専用ページがあります。</p>
+        </div>
+        <div class="feature-card" v-reveal>
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>プライバシー第一</h3>
+          <p>プライバシーを尊重します。アカウント不要、トラッキングなし、データ収集なし。</p>
+        </div>
+        <div class="feature-card" v-reveal>
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="14" height="10" rx="1"/>
+              <path d="M9 13v3"/>
+              <path d="M6 16h6"/>
+              <rect x="17" y="9" width="5" height="12" rx="1"/>
+            </svg>
+          </div>
+          <h3>レスポンシブデザイン</h3>
+          <p>デスクトップ、タブレット、モバイルデバイスで完璧に動作する美しいインターフェース。</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28">
+            <defs>
+              <linearGradient id="logoGradFooter" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#7eb3ff"/>
+                <stop offset="100%" stop-color="#3b6fd6"/>
+              </linearGradient>
+            </defs>
+            <rect width="32" height="32" rx="8" fill="url(#logoGradFooter)"/>
+            <text x="16" y="22" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#fff">E</text>
+          </svg>
+          Effic ツール
+        </div>
+        <div class="footer-links">
+          <a href="https://rollcall.effic.online/" target="_blank" rel="noopener">RollEasy 点名易</a>
+          <a href="https://image.effic.online/" target="_blank" rel="noopener">画像ツール</a>
+        </div>
+        <p class="footer-copyright">© 2024 Effic Online. すべての権利を留保。</p>
+      </div>
+    </footer>
+  </div>
+
+  <noscript>
+    <p style="text-align:center; font-family:sans-serif; padding:2rem;">
+      <a href="/en/">English</a> | <a href="/zh/">中文</a> | <a href="/es/">Español</a> | <a href="/de/">Deutsch</a> | <a href="/ja/">日本語</a>
+    </p>
+  </noscript>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

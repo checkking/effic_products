@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Effic 在线工具 - 智能网络应用</title>
+  <meta name="description" content="发现 Effic 精心打造的在线工具集，包括在线随机点名和图片工具。纯前端架构，多语言支持，隐私友好。" />
+  <meta name="keywords" content="在线工具, 随机点名, 图片工具, 图片压缩, effic" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Effic Online" />
+  <link rel="canonical" href="https://effic.online/zh/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/css/main.css" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:site_name" content="Effic 在线工具" />
+  <meta property="og:title" content="Effic 在线工具 - 智能网络应用" />
+  <meta property="og:description" content="发现 Effic 精心打造的在线工具集，包括在线随机点名和图片工具。纯前端架构，多语言支持，隐私友好。" />
+  <meta property="og:url" content="https://effic.online/zh/" />
+  <meta property="og:image" content="https://effic.online/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Effic 在线工具 - 智能网络应用" />
+  <meta name="twitter:description" content="发现 Effic 精心打造的在线工具集，包括在线随机点名和图片工具。纯前端架构，多语言支持，隐私友好。" />
+  <meta name="twitter:image" content="https://effic.online/og-image.png" />
+
+  <!-- hreflang alternates -->
+  <link rel="alternate" hreflang="en" href="https://effic.online/en/" />
+  <link rel="alternate" hreflang="zh" href="https://effic.online/zh/" />
+  <link rel="alternate" hreflang="es" href="https://effic.online/es/" />
+  <link rel="alternate" hreflang="de" href="https://effic.online/de/" />
+  <link rel="alternate" hreflang="ja" href="https://effic.online/ja/" />
+  <link rel="alternate" hreflang="x-default" href="https://effic.online/en/" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Effic Online",
+    "url": "https://effic.online/",
+    "logo": "https://effic.online/favicon.svg",
+    "description": "Effic 精心打造的在线工具集，包括在线随机点名和图片工具。纯前端架构，多语言支持，隐私友好。",
+    "offers": {
+      "@type": "OfferCatalog",
+      "name": "Effic 在线工具",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "SoftwareApplication",
+            "name": "RollEasy 点名易 — 在线随机点名",
+            "url": "https://rollcall.effic.online/",
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "Web",
+            "description": "纯前端随机点名工具，支持 Excel 花名册导入、本地缓存、滚动动画效果、3 种主题风格切换及多语言支持。"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "SoftwareApplication",
+            "name": "图片工具",
+            "url": "https://image.effic.online/",
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "Web",
+            "description": "商业级在线图片处理平台，提供图片压缩、格式转换、编辑、AI 工具及证件照制作等功能。"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <!-- ===== Navbar ===== -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo" @click.prevent="scrollToSection('home')">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="url(#navLogoGrad)" />
+            <text x="16" y="23" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#fff">E</text>
+            <defs>
+              <linearGradient id="navLogoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#5b8def" />
+                <stop offset="1" stop-color="#3b6fd6" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>Effic 工具</span>
+        </a>
+
+        <div class="nav-links" :class="{ 'nav-links-open': mobileMenuOpen }">
+          <a href="#home" :class="{ active: activeSection === 'home' }" @click.prevent="scrollToSection('home')">首页</a>
+          <a href="#products" :class="{ active: activeSection === 'products' }" @click.prevent="scrollToSection('products')">产品</a>
+          <a href="#features" :class="{ active: activeSection === 'features' }" @click.prevent="scrollToSection('features')">特性</a>
+        </div>
+
+        <details class="lang-switcher">
+          <summary class="lang-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18" />
+              <path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18" />
+            </svg>
+            <span>中文</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9l6 6l6-6" />
+            </svg>
+          </summary>
+          <div class="lang-dropdown">
+            <a href="/en/">English</a>
+            <a href="/zh/" class="active">中文</a>
+            <a href="/es/">Español</a>
+            <a href="/de/">Deutsch</a>
+            <a href="/ja/">日本語</a>
+          </div>
+        </details>
+
+        <button class="hamburger" :class="{ 'is-open': mobileMenuOpen }" @click="toggleMobileMenu" aria-label="切换菜单">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ===== Hero ===== -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>淡雅在线工具 <span class="gradient-text">触手可及</span></h1>
+        <p>纯前端应用，多语言支持。隐私友好 — 数据始终保留在您的浏览器中。</p>
+        <button class="hero-cta" @click="scrollToSection('products')">
+          <span>浏览产品</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6l-6 6" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ===== Products ===== -->
+    <section id="products" class="section">
+      <div class="section-title" v-reveal>
+        <h2>我们的产品</h2>
+        <p>精心设计的工具，让您的工作和生活更轻松</p>
+      </div>
+
+      <div class="product-grid">
+        <!-- Product Card 1: RollEasy -->
+        <div class="product-card" v-reveal>
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <circle cx="8" cy="7.5" r="1.3" fill="currentColor" stroke="none" />
+              <circle cx="16" cy="7.5" r="1.3" fill="currentColor" stroke="none" />
+              <circle cx="8" cy="12" r="1.3" fill="currentColor" stroke="none" />
+              <circle cx="16" cy="12" r="1.3" fill="currentColor" stroke="none" />
+              <circle cx="8" cy="16.5" r="1.3" fill="currentColor" stroke="none" />
+              <circle cx="16" cy="16.5" r="1.3" fill="currentColor" stroke="none" />
+            </svg>
+          </div>
+          <h3>RollEasy 点名易 — 在线随机点名</h3>
+          <p class="product-tagline">智能简便的点名工具</p>
+          <p class="product-desc">纯前端随机点名工具，支持 Excel 花名册导入、本地缓存、滚动动画效果、3 种主题风格切换及多语言支持。适用于课堂、会议、活动等场景。</p>
+          <ul class="product-features">
+            <li>Excel 导入</li>
+            <li>本地缓存</li>
+            <li>随机点名</li>
+            <li>主题切换</li>
+          </ul>
+          <a class="btn-visit" href="https://rollcall.effic.online/" target="_blank" rel="noopener">
+            <span>访问网站</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17L17 7" />
+              <path d="M8 7h9v9" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Product Card 2: Image Tools -->
+        <div class="product-card" v-reveal>
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="3" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+          </div>
+          <h3>图片工具</h3>
+          <p class="product-tagline">一站式图片处理平台</p>
+          <p class="product-desc">商业级在线图片处理平台，提供图片压缩、格式转换、编辑、AI 工具及证件照制作等功能。快速、可靠、易于使用。</p>
+          <ul class="product-features">
+            <li>图片压缩</li>
+            <li>格式转换</li>
+            <li>图片编辑</li>
+            <li>AI 工具</li>
+          </ul>
+          <a class="btn-visit" href="https://image.effic.online/" target="_blank" rel="noopener">
+            <span>访问网站</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17L17 7" />
+              <path d="M8 7h9v9" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section id="features" class="section">
+      <div class="section-title" v-reveal>
+        <h2>为什么选择我们</h2>
+        <p>采用现代技术打造最佳用户体验</p>
+      </div>
+
+      <div class="feature-grid">
+        <!-- Feature Card 1: Pure Frontend -->
+        <div class="feature-card" v-reveal>
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="11" width="16" height="10" rx="2" />
+              <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+            </svg>
+          </div>
+          <h3>纯前端</h3>
+          <p>无需后端服务器。所有处理都在您的浏览器中完成，数据不会离开您的设备。</p>
+        </div>
+
+        <!-- Feature Card 2: Multi-language -->
+        <div class="feature-card" v-reveal>
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18" />
+              <path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18" />
+            </svg>
+          </div>
+          <h3>多语言支持</h3>
+          <p>支持中文、英语、西班牙语、德语和日语，每种语言都有专属页面。</p>
+        </div>
+
+        <!-- Feature Card 3: Privacy First -->
+        <div class="feature-card" v-reveal>
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l8 3v6c0 5-3.5 8.5-8 11c-4.5-2.5-8-6-8-11V5l8-3z" />
+              <path d="M9 12l2 2l4-4" />
+            </svg>
+          </div>
+          <h3>隐私优先</h3>
+          <p>尊重您的隐私。无需注册账号，不追踪，不收集数据。</p>
+        </div>
+
+        <!-- Feature Card 4: Responsive Design -->
+        <div class="feature-card" v-reveal>
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="14" height="10" rx="1" />
+              <path d="M2 17h11" />
+              <rect x="17" y="9" width="5" height="11" rx="1" />
+            </svg>
+          </div>
+          <h3>响应式设计</h3>
+          <p>精美界面在桌面、平板和移动设备上均完美呈现。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="url(#footerLogoGrad)" />
+            <text x="16" y="23" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#fff">E</text>
+            <defs>
+              <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#5b8def" />
+                <stop offset="1" stop-color="#3b6fd6" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>Effic 工具</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://rollcall.effic.online/" target="_blank" rel="noopener">点名易</a>
+          <a href="https://image.effic.online/" target="_blank" rel="noopener">图片工具</a>
+        </div>
+        <p class="footer-copyright">© 2024 Effic Online. 保留所有权利。</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
